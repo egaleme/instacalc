@@ -1,0 +1,17 @@
+<Panel ux:Class="ProductsBox">
+	<JavaScript File="ProductsBox.js"/>
+	<ScrollView Height="200">
+		<WrapPanel>
+			<Each Items="{products}">
+				<Panel>
+					<Deferred>
+						<Circle HitTestMode="LocalBoundsAndChildren" Margin="5" Width="80" Height="80" Color="{expireTracker}">
+							<Text FontSize="14" Font="LatoRegular" TextWrapping="Wrap" TextAlignment="Center" Alignment="VerticalCenter" Value="{name}" TextColor="#00000090"/>
+							<Tapped Handler="{putSales}"/>
+						</Circle>
+					</Deferred>
+				</Panel>
+			</Each>
+		</WrapPanel>
+	</ScrollView>
+</Panel>

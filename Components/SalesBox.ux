@@ -1,0 +1,66 @@
+<Panel ux:Class="SalesBox">
+	<JavaScript File="SalesBox.js"/>
+		<DockPanel >
+			<Panel ux:Name="FullWindow" Layer="Overlay"/>
+			<ResourceObject Key="FullWindow" Value="FullWindow"/>
+			<DockPanel Dock="Left" Width="75%">
+				<Text ux:Class="Heading" Alignment="Center" TextColor="White" Font="LatoLight"/>
+				<Rectangle ux:Class="Seperator" Width="1" Color="White"/>
+				<Grid ColumnCount="5" Dock="Top" Background="#c4c4c480">
+					<Heading TextColor="Black" Value="Item" Alignment="CenterRight"/>
+					<Seperator/>
+					<Heading TextColor="Black" Value="Qty"/>
+					<Seperator/>
+					<Heading TextColor="Black" Value="Price" Alignment="CenterLeft"/>
+				</Grid>
+				<StackPanel>
+					<ScrollView Height="200">
+						<StackPanel ux:Name="prodsales" Background="#c4c4c450">
+							<Each Items="{products}">
+								<PageControl Active="content">
+									<Page ux:Name="content">
+										<Grid ColumnCount="3" HitTestMode="LocalBoundsAndChildren">
+											<Heading Font="LatoRegular" Value="{name}" TextWrapping="Wrap" TextColor="Black"/>
+											<Heading Font="LatoRegular" Value="{quantity}" TextColor="Black"/>
+											<Heading Font="LatoRegular" Value="{price}" TextColor="Black"/>
+											<Clicked>
+												<Callback Handler="{editProduct}"/>
+												<Set ModalConfirm.IsEnabled="true"/>
+											</Clicked>
+										</Grid>
+									</Page>
+									<Page>
+										<Rectangle Layer="Background" Fill="Red">
+											<Text Value="Deleted !" Alignment="CenterLeft" Font="LatoBold" FontSize="16" TextColor="White"/>
+										</Rectangle>
+										<WhileActive>
+											<Callback Handler="{deleteProduct}"/>
+										</WhileActive>
+									</Page>
+								</PageControl>
+								<LineDivider  Height="1"/>
+							</Each>
+							<WhileTrue Value="{showUpdate}">
+								<Change prodsales.Opacity="0.4" Duration="0.2" Easing="BackOut"/>
+							</WhileTrue>
+						</StackPanel>
+					</ScrollView>
+					<EditSalesModal ux:Name="ModalConfirm"/>
+				</StackPanel>
+					<Panel Alignment="BottomRight" Margin="0,0,10,5">
+						<Text Font="LatoRegular" Value="{total}" TextColor="Red"/>
+					</Panel>
+			</DockPanel>
+			<Panel  Dock="Right" Background="#c4c4c480" Width="25%">
+				<StackPanel>
+					<TextBox Margin="0,20,0,0" Background="White" Width="85" PlaceholderText="Enter price" TextColor="Black" Value="{price}" Alignment="Center"/>
+					<Rectangle HitTestMode="LocalBoundsAndChildren" CornerRadius="10" Fill="#12779990" Width="60" Height="20" Margin="10,10">
+					<Text Tapped="{putSales}" TextColor="White" Font="LatoRegular" Value="Enter" Alignment="Center"/>
+					</Rectangle>
+					<Rectangle HitTestMode="LocalBoundsAndChildren" Alignment="Bottom" CornerRadius="10" Fill="#12779990" Width="60" Height="20" Margin="0, 90, 0 ,0">
+					<Text Tapped="{enterSales}" TextColor="White" Font="LatoRegular" Value="Sell" Alignment="Center"/>
+					</Rectangle>
+				</StackPanel>
+			</Panel>
+		</DockPanel>
+	</Panel>

@@ -1,0 +1,52 @@
+<Panel ux:Class="StockPage">
+	<Router ux:Dependency="router"/>
+
+	<EdgeNavigator ux:Name="EdgeNavigator">
+		<SideBar ux:Name="sideBar" Width="220" EdgeNavigation.Edge="Left" router="router">
+			<ActivatingAnimation>
+				<Change mainAppTranslation.X="220"/>
+				<!-- Change to cross out -->
+				<Change topMenuTranslation.Y="0" />
+				<Change bottomMenuTranslation.Y="0" />
+				<Change middleRectangle.Opacity="0" Easing="CircularOut" />
+				<Change topMenuRotation.Degrees="45" Easing="ExponentialIn" />
+				<Change bottomMenuRotation.Degrees="-45" Easing="ExponentialIn" />
+				<Change topRectangle.Width="28" />
+				<Change bottomRectangle.Width="28" />
+			</ActivatingAnimation>
+		</SideBar>
+		<DockPanel>
+			<Translation ux:Name="mainAppTranslation"/>
+			<DockPanel Dock="Top">
+				<Panel Height="30"  Color="#12779990">
+					<Grid Columns="auto, 1*">
+						<Panel Margin="7,5,5,5" Width="20" HitTestMode="LocalBounds">
+							<Clicked>
+								<NavigateToggle Target="sideBar"/>
+							</Clicked>
+							<Rectangle ux:Name="topRectangle" Height="2" Width="26" Fill="#fff">
+								<Translation Y="-9" ux:Name="topMenuTranslation"/>
+								<Rotation ux:Name="topMenuRotation"/>
+							</Rectangle>
+							<Rectangle ux:Name="middleRectangle" Height="2" Width="26" Fill="#fff"/>
+							<Rectangle ux:Name="bottomRectangle" Height="2" Width="26" Fill="#fff">
+								<Translation Y="9" ux:Name="bottomMenuTranslation"/>
+								<Rotation ux:Name="bottomMenuRotation"/>
+							</Rectangle>
+						</Panel>
+						<Text Alignment="VerticalCenter" TextColor="White" TextAlignment="Center" Value="Stock Diary" Font="LatoLight"/>
+					</Grid>
+				</Panel>
+			</DockPanel>
+			<!-- Main View -->
+			<Grid Rows="auto, 1*">
+				<StackPanel Margin="0,0,0,10">
+					<StockBox router="router"/>
+				</StackPanel>
+				<StackPanel Margin="0,10,0,0">
+					<StockList/>
+				</StackPanel>
+			</Grid>
+		</DockPanel>
+	</EdgeNavigator>
+</Panel>

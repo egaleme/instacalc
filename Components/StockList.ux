@@ -1,0 +1,33 @@
+<Panel ux:Class="StockList">
+	<JavaScript File="StockList.js"/>
+	<Panel ux:Name="StockWindow" Layer="Overlay"/>
+	<ResourceObject Key="StockWindow" Value="StockWindow"/>
+	<StackPanel>
+		<Grid ColumnCount="5" Margin="1" Background="#c4c4c490">
+			<Heading TextColor="Black" Value="Item" Alignment="CenterRight"/>
+			<Seperator Color="#00000060"/>
+			<Heading TextColor="Black" Value="Price"/>
+			<Seperator Color="#00000060"/>
+			<Heading TextColor="Black" Value="Qty" Alignment="CenterLeft"/>
+		</Grid>
+	<ScrollView Height="260">
+		<StackPanel Margin="5">
+			<Each Items="{products}">
+						<Grid ux:Name="gridList" HitTestMode="LocalBoundsAndChildren" ColumnCount="3" Margin="1" Background="{expireTracker}">
+							<Heading Value="{name}" TextAlignment="Center" TextWrapping="Wrap" TextColor="Black"/>
+							<Heading Value="{price}" TextAlignment="Center" TextColor="Black"/>
+							<Heading Value="{quantity}" TextAlignment="Center" TextColor="Black"/>
+							<Tapped>
+								<Callback Handler="{product}"/>
+								<Set ModalConf.IsEnabled="true"/>
+							</Tapped>
+							<WhileTrue Value="{showModal}">
+								<Change gridList.Opacity="0.3"/>
+							</WhileTrue>
+						</Grid>
+			</Each>
+			<DeleteStockModal ux:Name="ModalConf"/>
+		</StackPanel>
+	</ScrollView>
+</StackPanel>
+</Panel>

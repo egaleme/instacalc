@@ -1,0 +1,11 @@
+<App>
+	<Router ux:Name="router" BackButtonAction="GoBack"/>
+	<FontsClass/>
+	<ClientPanel>
+		<Navigator DefaultPath="sellingPage">
+			<SellingPage ux:Template="sellingPage" router="router"/>
+			<StockPage ux:Template="stockPage" router="router"/>
+			<SalesReport ux:Template="salesReport" router="router"/>
+		</Navigator>
+	</ClientPanel>
+</App>

@@ -1,0 +1,36 @@
+<Panel ux:Class="EditSalesModal" IsEnabled="false" ux:Name="Modal">
+	<WhileEnabled>
+		<AlternateRoot ParentNode="{Resource FullWindow}">
+			<Panel>
+				<StackPanel Margin="10,20" Width="300" Height="300" Background="#c4c4c495" Alignment="TopCenter">
+					<StackPanel Margin="5,40" Alignment="Center">
+						<StackPanel ItemSpacing="5" Orientation="Horizontal">
+							<Text Margin="5" Value="Qty : " Font="LatoRegular" Alignment="CenterLeft"/>
+							<TextBox Width="100" Alignment="Center" Value="{editedquantity}" PlaceholderText="edit quantity" TextColor="Black" TextAlignment="Center" Margin="5" Font="LatoRegular"/>
+						</StackPanel>
+						<StackPanel ItemSpacing="5" Orientation="Horizontal">
+							<Text Margin="5" Value="Price : " Font="LatoRegular" Alignment="CenterLeft"/>
+							<TextBox Width="100" Alignment="Center" Value="{editedPrice}" PlaceholderText="edit price" TextColor="Black" TextAlignment="Center" Margin="5" Font="LatoRegular"/>
+						</StackPanel>
+					</StackPanel>
+					<StackPanel Alignment="Center" ItemSpacing="5" Orientation="Horizontal">
+						<Rectangle Width="80" Height="30" CornerRadius="80" HitTestMode="LocalBoundsAndChildren" Fill="#12779980">
+							<Text TextColor="Black" Value="edit" TextAlignment="Center" Alignment="Center"/>
+							<Clicked>
+								<Callback Handler="{updateProduct}"/>
+								<Set Modal.IsEnabled="false"/>
+							</Clicked>
+						</Rectangle>
+						<Rectangle Width="80" Height="30" CornerRadius="80" HitTestMode="LocalBoundsAndChildren" Fill="#12779980">
+							<Text Value="cancel" TextColor="Black" TextAlignment="Center" Alignment="Center"/>
+							<Clicked> 
+								<Callback Handler="{cancelUpdate}"/>
+								<Set Modal.IsEnabled="false"/>
+							</Clicked>
+						</Rectangle>
+					</StackPanel>
+				</StackPanel>
+			</Panel>
+		</AlternateRoot>
+	</WhileEnabled>
+</Panel>

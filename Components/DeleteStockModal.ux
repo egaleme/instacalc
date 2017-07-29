@@ -1,0 +1,27 @@
+<Panel ux:Class="DeleteStockModal" IsEnabled="false" ux:Name="ModalStock">
+	<WhileEnabled>
+		<AlternateRoot ParentNode="{Resource StockWindow}">
+			<StackPanel Width="200" Height="100"  Background="#00000090" Alignment="Center">
+				<Text Margin="8" Value="Delete ?" Alignment="Center" Font="LatoRegular" TextColor="Black"/>
+				<Panel>
+					<StackPanel ItemSpacing="9" Orientation="Horizontal" Alignment="Center" Margin="5">
+						<Rectangle Width="80" Height="30" Fill="Red" CornerRadius="100" HitTestMode="LocalBoundsAndChildren">
+							<Text Value="Yes" Font="LatoRegular" TextColor="White" Alignment="Center"/>
+							<Clicked>
+								<Callback Handler="{deleteProduct}"/>
+								<Set ModalStock.IsEnabled="false"/>
+							</Clicked>
+						</Rectangle>
+						<Rectangle Width="80" Height="30" Fill="#12779980" CornerRadius="100" HitTestMode="LocalBoundsAndChildren">
+							<Text Value="No" Font="LatoRegular" TextColor="White" Alignment="Center"/>
+							<Clicked>
+								<Callback Handler="{cancelDelete}"/>
+								<Set ModalStock.IsEnabled="false"/>
+							</Clicked>
+						</Rectangle>
+					</StackPanel>
+				</Panel>
+			</StackPanel>
+		</AlternateRoot>
+	</WhileEnabled>
+</Panel>

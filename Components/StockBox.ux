@@ -1,0 +1,35 @@
+<Panel ux:Class="StockBox">
+	<Router ux:Dependency="router"/>
+	<JavaScript File="StockBox.js"/>
+	<Rectangle ux:Class="LineDivider" Color="#d7d7d790" Width="100%" Height="1"/>
+	<TextInput Margin="8" ux:Class="ProductInput" TextColor="Black" Font="LatoLight" />
+	<DockPanel>
+		<StackPanel ux:Name="addProduct">
+			<Text Margin="5" Font="LatoLight" Value="{errField}" TextAlignment="Center" Color="Red"/>
+			<ProductInput PlaceholderText="Enter Product Name" Value="{name}"/>
+			<LineDivider/>
+			<ProductInput PlaceholderText="Enter Product batch no" Value="{batchno}"/>
+			<LineDivider/>
+			<ProductInput PlaceholderText="Expiring date (yyyy-mm-dd)" Value="{expiringdate}"/>
+			<LineDivider/>
+			<ProductInput PlaceholderText="Price (format: 2500.50)" Value="{price}"/>
+			<LineDivider/>
+			<ProductInput PlaceholderText="Enter Product quantity" Value="{quantity}"/>
+			<LineDivider/>
+			<Panel Alignment="VerticalCenter">
+				<Rectangle HitTestMode="LocalBoundsAndChildren" CornerRadius="80" Fill="#12779980" Width="100" Height="30" >
+					<Text TextColor="White" Font="LatoThin" Value="Add" Alignment="Center"/>
+					<Clicked Handler="{addProduct}"/>
+				</Rectangle>
+			</Panel>
+			<WhileTrue Value="{showUpdate}">
+				<Change addProduct.Opacity="0"/>
+			</WhileTrue>
+		</StackPanel>
+		<StockUpdateBox ux:Name="updateProduct" Opacity="0">
+			<WhileTrue Value="{showUpdate}">
+				<Change updateProduct.Opacity="1"/>
+			</WhileTrue>
+		</StockUpdateBox>
+	</DockPanel>
+</Panel>

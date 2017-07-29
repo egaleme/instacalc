@@ -1,0 +1,16 @@
+<Panel ux:Class="SideBar" Background="#12779990">
+	<JavaScript File="SideBar.js"/>
+	<Router ux:Dependency="router"/>
+	<DockPanel Margin="10" Alignment="TopCenter">
+		<Panel Dock="Top" Margin="50">
+			<Text Value="Menu" Font="LatoRegular" FontSize="30" TextAlignment="Center" />
+		</Panel>
+		<StackPanel HitTestMode="LocalBoundsAndChildren">
+			<Text Value="Sales Screen" Clicked="{goSalesScreen}" Font="LatoBold" TextColor="Black" Alignment="Center"/>
+			<LineDivider Margin="10" Height="3"/>
+			<Text Value="Stock Diary" Clicked="{goStockDiary}" Font="LatoBold" TextColor="Black" Alignment="Center"/>
+			<LineDivider Margin="10" Height="3"/>
+			<Text Value="Sales Report" Clicked="{goSalesReport}" Font="LatoBold" TextColor="Black" Alignment="Center"/>
+		</StackPanel>
+	</DockPanel>
+</Panel>

@@ -1,0 +1,34 @@
+<Panel ux:Class="StockUpdateBox">
+	<JavaScript File="StockUpdateBox.js"/>
+	<TextInput Margin="6" ux:Class="ProductUpdate" TextColor="Black" Font="LatoLight" />
+	<DockPanel>
+		<StackPanel>
+			<Text Value="{errField}" TextAlignment="Center" TextColor="Red" Margin="5"/>
+
+			<ProductUpdate PlaceholderText="Enter Product Name" Value="{name}"/>
+			<LineDivider/>
+			<ProductUpdate PlaceholderText="Enter Product batch no" Value="{batchno}"/>
+			<LineDivider/>
+			<ProductUpdate PlaceholderText="Expiring date (yyyy-mm-dd)" Value="{expiringdate}"/>
+			<LineDivider/>
+			<ProductUpdate PlaceholderText="Price (format: 2500.50)" Value="{price}"/>
+			<LineDivider/>
+			<ProductUpdate PlaceholderText="Enter Product quantity" Value="{quantity}"/>
+			<LineDivider/>
+			<StackPanel ItemSpacing="9" Orientation="Horizontal" Alignment="Center">
+				<Panel>
+					<Rectangle HitTestMode="LocalBoundsAndChildren" CornerRadius="80" Fill="Red" Width="80" Height="30" >
+						<Text TextColor="White" Font="LatoThin" Value="Update" Alignment="Center"/>
+						<Clicked Handler="{updateProduct}"/>
+					</Rectangle>
+				</Panel>
+				<Panel>
+					<Rectangle HitTestMode="LocalBoundsAndChildren" CornerRadius="80" Fill="#12779980" Width="80" Height="30" >
+						<Text TextColor="White" Font="LatoThin" Value="Cancel" Alignment="Center"/>
+						<Clicked Handler="{cancelUpdate}"/>
+					</Rectangle>
+				</Panel>
+			</StackPanel>
+		</StackPanel>
+	</DockPanel>
+</Panel>

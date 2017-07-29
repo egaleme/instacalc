@@ -1,0 +1,33 @@
+<Panel ux:Class="SalesReportBox">
+	<JavaScript File="SalesReportBox.js"/>
+	<StackPanel>
+		<TextBox TextAlignment="Center" Width="240" Margin="0,5,0,10" Value="{date}" Font="LatoRegular" Alignment="Center" PlaceholderText="Enter date format: yyyy-mm-dd" PlaceholderColor="#00000080"/>
+		<Panel Margin="0,10,0,10">
+			<Rectangle CornerRadius="80" Layer="Background" Alignment="Center" Width="80" Height="30" Fill="#12779990" HitTestMode="LocalBoundsAndChildren">
+				<Text Value="submit" Font="LatoThin" TextColor="White" Alignment="Center"/>
+				<Clicked Handler="{getSales}"/>
+			</Rectangle>
+		</Panel>
+		<Text Margin="0,10,0,5" Value="{totalDailySales}" Font="LatoLight" Alignment="Center" TextColor="Red" TextWrapping="Wrap"/>
+		<Text Margin="0,10,0,5" Value="{todaysDate}" Font="LatoLight" Alignment="Center" TextColor="Red" TextWrapping="Wrap"/>
+		<ScrollView Height="300">
+			<StackPanel>
+				<Each Items="{sales}">
+					<Grid Margin="0,10,0,0" ColumnCount="2" RowCount="2">
+						<Text Font="LatoLight" Margin="0,0,25,0" Row="0" Column="0"  Value="{totalamount}" TextColor="Black" Alignment="Center"/>
+						<StackPanel Row="0" Column="1" ItemSpacing="5">
+							<Each Items="{products_sold}">
+								<Grid ColumnCount="3">
+									<Text Font="LatoLight" TextWrapping="Wrap" Value="{name}" TextColor="Black"/>
+									<Text Font="LatoLight" Margin="5,0,0,0" Value="{quantity}" TextColor="Black"/>
+									<Text Font="LatoLight" Margin="5,0,0,0" Value="{price}" TextColor="Black"/>
+								</Grid>	
+							</Each>
+						</StackPanel>
+					</Grid>
+					<LineDivider Margin="5" Color="#00000030"/>
+				</Each>
+			</StackPanel>
+		</ScrollView>
+	</StackPanel>
+</Panel>
